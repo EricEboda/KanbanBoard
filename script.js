@@ -69,7 +69,6 @@ const update = {
             const item = list_items[i]
 
             item.addEventListener('dragstart', function () {
-                console.log('dragstart');
                 draggedItem = item;
                 setTimeout(function () {
                     item.style.display = 'none';
@@ -77,15 +76,26 @@ const update = {
             })
 
             item.addEventListener('dragend', function () {
-                console.log('dragend');
                 setTimeout(function () {
-                    draggedItem.style.display = 'block';
+                    draggedItem.style.display = 'grid';
                     draggedItem = null;
                 }, 0);
             })
 
             for (let j = 0; j < lists.length; j++) {
                 const list = lists[j];
+
+                list.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                });
+
+                list.addEventListener('dragenter', function (e) {
+                    e.preventDefault();   
+                });
+
+                list.addEventListener('drop', function (e) {
+                    this.append(draggedItem)
+                });
             }
         }
 
