@@ -89,10 +89,6 @@
     width: 50%
   }
 
-  #todo-section {
-    width: 4rem;
-  }
-
   /* Responsive layout*/
   @media (max-width: 1000px) {
     .grid-container  {

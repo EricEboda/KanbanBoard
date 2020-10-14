@@ -20,11 +20,9 @@ const view = (state) => `
             </section>
         </div>
 
-        <div class="left list">
+        <div class="left list" id="todo-section">
             <h2>To Do</h2>
-            <section id="todo-section">
-                ${value}
-            </section>
+                ${value}  
         </div>
 
         <div class="middle list">
@@ -52,7 +50,7 @@ const update = {
         }
         state.tasks.push(task)
 
-        value = document.getElementById("todo-section").innerHTML += `
+        value = document.getElementById("todo-section").innerHTML = `
             <div draggable="true" class="list-item" id="task${state.tasks.length}">
                 <ul>
                     ${state.tasks.slice(state.tasks.length - 1, state.tasks.length).map(task => `<li>${task.text}</li>`).join("")}
@@ -90,11 +88,17 @@ const update = {
                 });
 
                 list.addEventListener('dragenter', function (e) {
-                    e.preventDefault();   
+                    e.preventDefault();
+                    this.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
                 });
+
+                list.addEventListener('dragleave', function (e) {
+                    this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+                })
 
                 list.addEventListener('drop', function (e) {
                     this.append(draggedItem)
+                    this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
                 });
             }
         }
