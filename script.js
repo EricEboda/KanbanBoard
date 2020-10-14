@@ -72,7 +72,7 @@ const update = {
                 console.log('dragstart');
                 draggedItem = item;
                 setTimeout(function () {
-                    this.style.display = 'none';
+                    item.style.display = 'none';
                 }, 0)
             })
 
