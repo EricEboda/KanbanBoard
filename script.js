@@ -60,7 +60,34 @@ const update = {
                 <button id="deleteButton" onclick="deleteButton(${state.tasks.length - 1})">❌</button>
             </div>
         `
-        const list_items = 
+        const list_items = document.querySelectorAll(".list-item");
+        const lists = document.querySelectorAll('.list');
+
+        let draggedItem = null;
+
+        for (let i = 0; i < list_items.length; i++) {
+            const item = list_items[i]
+
+            item.addEventListener('dragstart', function () {
+                console.log('dragstart');
+                draggedItem = item;
+                setTimeout(function () {
+                    this.style.display = 'none';
+                }, 0)
+            })
+
+            item.addEventListener('dragend', function () {
+                console.log('dragend');
+                setTimeout(function () {
+                    draggedItem.style.display = 'block';
+                    draggedItem = null;
+                }, 0);
+            })
+
+            for (let j = 0; j < lists.length; j++) {
+                const list = lists[j];
+            }
+        }
 
         return state
     }   
