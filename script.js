@@ -103,4 +103,4 @@ const update = {
     }   
 }
 
-app.start('todoApp', state, view, update)
+app.start('todoApp', state, view, update)0
