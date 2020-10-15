@@ -1,0 +1,24 @@
+{
+  "name": "board",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeniseNamutebi/KanbanBoard.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeniseNamutebi/KanbanBoard/issues"
+  },
+  "homepage": "https://github.com/DeniseNamutebi/KanbanBoard#readme",
+  "dependencies": {
+    "jest": "^26.5.3",
+    "sequelize": "^6.3.5",
+    "sqlite3": "^5.0.0"
+  }
+}
