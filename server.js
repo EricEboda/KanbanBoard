@@ -12,8 +12,3 @@ app.use(express.static('public'))
 app.engine('handlebars', handlebars)
 app.set('view engine', 'handlebars')
 
-app.get('/', (request, response) => {
-    response.render('users', {date: new Date()})
-})
-
-app.listen(3000, () => console.log('web server running on port 3000'))
