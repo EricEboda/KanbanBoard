@@ -27,16 +27,12 @@ body {
     'left middle right';
 } 
 
-/*
+
 .left,
 .middle,
 .right {
-  padding: 10px;
-  width: 39.4rem;
-  height: 40rem; 
   background-color: #f1f1f1;
-  border: black solid 1px;
-} */
+}
 
 .left {
   grid-area: left;
@@ -62,7 +58,6 @@ body {
   background-color: white;
   border-radius: 20px;
   word-wrap: break-word;
-  width: 25rem;
   padding: 1rem;
   border: solid black 1px;
   -webkit-box-shadow: 0px 0px 12px 4px rgba(0,0,0,0.5); 
@@ -93,6 +88,15 @@ button {
 #deleteButton {
   cursor: pointer;
   width: 50%
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /* Responsive layout*/

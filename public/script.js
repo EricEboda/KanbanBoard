@@ -1,12 +1,12 @@
 let tasks = [];
+let boards = [];
+let draggedItem = null;
 
 /* DELETE TASK FUNCTION */
 function deleteButton(item) {
     tasks.splice(item, 1)
     document.getElementById(`task${item + 1}`).remove();
 }
-
-let draggedItem = null;
 
 function addButton(taskInput) {
     console.log(taskInput.value)
@@ -45,7 +45,7 @@ function addButton(taskInput) {
         })
         item.addEventListener('dragend', function () {
             setTimeout(function () {
-                draggedItem.style.display = 'grid';
+                draggedItem.style.display = 'flex';
                 draggedItem = null;
             }, 0);
         })
@@ -56,7 +56,7 @@ function addButton(taskInput) {
             });
             list.addEventListener('dragenter', function (e) {
                 e.preventDefault();
-                this.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+                this.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
             });
             list.addEventListener('dragleave', function (e) {
                 this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
@@ -85,4 +85,18 @@ function addButton(taskInput) {
         }
     }
     return false;
+}
+
+function saveBoard() {
+
+    if (boards.length == 0) {
+        const board = {
+            title: document.getElementById("projectName").textContent,
+            tasks: tasks
+        }
+        boards.push(board)
+    } else {
+        boards.splice(0, boards.length)
+        saveBoard()
+    }
 }

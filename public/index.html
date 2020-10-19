@@ -6,7 +6,8 @@
 <body>
     <div class="grid-container lists">
         <div class="header">
-            <h2 contenteditable="true">New Project</h2>
+            <button onclick="saveBoard()">Save</button>
+            <h2 id="projectName" contenteditable="true">New Project</h2>
         </div>
     
         <div class="controls">
@@ -19,16 +20,16 @@
             </section>
         </div>
         <div class="left list" id="todo-section">
-            <h2>To Do</h2>
+            <h2 class="unselectable">To Do</h2>
         </div>
 
         <div class="middle list">
-            <h2>Doing</h2>
+            <h2 class="unselectable">Doing</h2>
             
         </div>  
 
         <div class="right list">
-            <h2>Completed</h2>
+            <h2 class="unselectable">Completed</h2>
         </div>
     </div>
 <script src="script.js"></script>
