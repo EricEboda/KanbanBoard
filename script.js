@@ -66,14 +66,19 @@ function addButton(taskInput) {
                 this.append(draggedItem)
                 this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
 
+                let draggedId = draggedItem.id.charAt(4) - 1  
+                let draggedObject = tasks.find(x => x.id == draggedId);
                 let itemParent = draggedItem.parentElement.className;
+
                 if (itemParent == "left list") {
-                    let draggedId = draggedItem.id.charAt(4) - 1
-                    console.log(draggedId)
+                    draggedObject.status = 0
+                    console.log(draggedObject.status)
                 } else if (itemParent == "middle list") {
-                    console.log("middle")
+                    draggedObject.status = 1
+                    console.log(draggedObject.status)
                 } else {
-                    console.log("right")
+                    draggedObject.status = 2
+                    console.log(draggedObject.status)
                 }
                 
             });
