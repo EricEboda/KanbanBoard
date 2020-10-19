@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grid-container lists">
+        <div class="header">
+            <h2 contenteditable="true">New Project</h2>
+        </div>
+    
+        <div class="controls">
+            <h2>Tasks</h2>
+            <section>
+                <form onsubmit="return addButton(taskInput)">
+                    <input id="task.value" name="taskInput" placeholder="Add a task" type="text"/>
+                    <button type="submit">Add</button>
+                </form>
+            </section>
+        </div>
+        <div class="left list" id="todo-section">
+            <h2>To Do</h2>
+        </div>
+
+        <div class="middle list">
+            <h2>Doing</h2>
+            
+        </div>  
+
+        <div class="right list">
+            <h2>Completed</h2>
+        </div>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
