@@ -29,7 +29,7 @@ function addButton(taskInput) {
     <ul>
         ${tasks.slice(tasks.length - 1, tasks.length).map(task => `<li>${task.text}</li>`).join("")}
     </ul>
-    <button id="deleteButton" onclick="deleteButton(${tasks.length - 1})">❌</button>
+    <img src="https://www.flaticon.com/svg/static/icons/svg/1168/1168643.svg" id="deleteButton" onclick="deleteButton(${tasks.length - 1})" height="20px" width="20px">
     `
 
     const list_items = document.querySelectorAll(".list-item");
@@ -59,12 +59,12 @@ function addButton(taskInput) {
                 this.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
             });
             list.addEventListener('dragleave', function (e) {
-                this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+                this.style.backgroundColor = 'rgb(235,236,240)';
             })
             list.addEventListener('drop', function (e) {
                 console.log(draggedItem)
                 this.append(draggedItem)
-                this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+                this.style.backgroundColor = 'rgb(235,236,240)';
 
                 let draggedId = draggedItem.id.charAt(4) - 1  
                 let draggedObject = tasks.find(x => x.id == draggedId);

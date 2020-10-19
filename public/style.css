@@ -1,3 +1,10 @@
+:root{
+  /*colors*/
+  --red-color : #ff737d;
+  --orange-color: #f7a000;
+  --green-color: #74b81f;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,25 +14,21 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.header {
-  grid-area: header;
-  background-color: #f1f1f1;
-  padding: 30px;
-  text-align: center;
-  font-size: 35px;
-}
-
 /* The grid container */
 .grid-container {
   display: grid;
   height: 100vh;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 1fr 1fr 2fr;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr 1fr 2fr 2fr 2fr;
   grid-template-areas: 
-    'header header header ' 
-    'controls controls controls '
-    'left middle right';
+    'header ' 
+    'controls'
+    'left' 
+    'middle' 
+    'right';
+  gap: 1rem;
 } 
+
 
 
 .left,
@@ -34,43 +37,106 @@ body {
   background-color: #f1f1f1;
 }
 
+.header{
+  grid-area: header;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header h2{
+  font-size: 3rem;
+}
+
+.controls {
+  grid-area: controls;
+  background-color: #e7bbbb;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .left {
   grid-area: left;
 }
 
+.left .list-item:hover{
+  border: 2px solid var(--red-color);
+}
+
+.left h2{
+  background: var(--red-color);
+}
+
 .middle {
   grid-area: middle;
+  
+}
+
+.middle .list-item:hover{
+  border: 2px solid var(--orange-color);
+}
+
+.list{
+  background: #ebecf0;
+  border: 2rem;
+}
+
+.list h2{
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  color: white;
+  border-radius: .1rem;
+}
+
+.middle h2{
+  background: var(--orange-color);
 }
 
 .right {
   grid-area: right;
 }
 
-.controls {
-  grid-area: controls;
-  background-color: #e7bbbb;
-  padding: 10px;
-  text-align: center;
+.right h2{
+ background: var(--green-color);
 }
 
+.right .list-item:hover{
+  border: 2px solid var(--green-color);
+}
+
+
 .list-item {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  flex-direction: row;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 5px;
   word-wrap: break-word;
+  width: 80%;
   padding: 1rem;
-  border: solid black 1px;
-  -webkit-box-shadow: 0px 0px 12px 4px rgba(0,0,0,0.5); 
-  box-shadow: 0px 0px 12px 4px rgba(0,0,0,0.5);
-  display: grid;
-  grid-template-areas: 'ul button';
-  position: relative;
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12);
   cursor: grab;
-  margin: 1rem;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  
 }
 
 ul {
   list-style-type: none;
+}
+
+ul li{
+ flex: 1;
+
 }
 
 button:hover {
@@ -78,17 +144,32 @@ button:hover {
 }
 
 button {
+  flex: 1;
   cursor: pointer;
   background-color: rgb(244, 255, 236);
   border-radius: 5px;
   border: solid black 1px;
   padding: .3rem;
+
+  justify-content: center;
+  align-items: center;
 }
 
 #deleteButton {
   cursor: pointer;
   width: 50%
 }
+
+
+#deleteButton{
+  position: relative;
+  left: 3rem;
+}
+
+#deleteButton:hover{
+ transform: scale(1.2);  
+}
+
 
 .unselectable {
   -webkit-touch-callout: none;
@@ -99,14 +180,25 @@ button {
   user-select: none;
 }
 
+
 /* Responsive layout*/
-@media (max-width: 1000px) {
-  .grid-container  {
+@media screen and (min-width: 580px){
+  .grid-container {
+    box-sizing: border-box;
+    display: grid;
+    height: 100vh;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)  ;
+    grid-template-rows: 1fr 1fr 3.5fr ;
     grid-template-areas: 
-      'header header header header header header'
-      'controls controls controls controls controls controls'
-      'left left left left left left' 
-      'middle middle middle middle middle middle' 
-      'right right right right right right';
+      'header header header' 
+      'controls controls controls'
+      'left middle right'; 
+    gap: 1rem;
+    padding: 1rem;
+  } 
+
+  .list{
+    background: rgb(235,236,240);
+    border-radius: .1rem;
   }
 }
