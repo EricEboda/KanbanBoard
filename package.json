@@ -4,7 +4,8 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,9 @@
   },
   "homepage": "https://github.com/DeniseNamutebi/KanbanBoard#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "jest": "^26.5.3",
+    "nodemon": "^2.0.5",
     "sequelize": "^6.3.5",
     "sqlite3": "^5.0.0"
   }

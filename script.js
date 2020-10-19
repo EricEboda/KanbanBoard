@@ -62,8 +62,20 @@ function addButton(taskInput) {
                 this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
             })
             list.addEventListener('drop', function (e) {
+                console.log(draggedItem)
                 this.append(draggedItem)
                 this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+
+                let itemParent = draggedItem.parentElement.className;
+                if (itemParent == "left list") {
+                    let draggedId = draggedItem.id.charAt(4) - 1
+                    console.log(draggedId)
+                } else if (itemParent == "middle list") {
+                    console.log("middle")
+                } else {
+                    console.log("right")
+                }
+                
             });
         }
     }
