@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 body {
@@ -17,12 +18,16 @@ body {
 /* The grid container */
 .grid-container {
   display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr 1fr 2fr;
   grid-template-areas: 
-    'header header header header header header' 
-    'controls controls controls controls controls controls'
-    'left left middle middle right right';
+    'header header header ' 
+    'controls controls controls '
+    'left middle right';
 } 
 
+/*
 .left,
 .middle,
 .right {
@@ -31,7 +36,7 @@ body {
   height: 40rem; 
   background-color: #f1f1f1;
   border: black solid 1px;
-} 
+} */
 
 .left {
   grid-area: left;
