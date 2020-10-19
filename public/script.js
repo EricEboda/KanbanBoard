@@ -88,13 +88,18 @@ function addButton(taskInput) {
 }
 
 function saveBoard() {
-
     if (boards.length == 0) {
-        const board = {
-            title: document.getElementById("projectName").textContent,
-            tasks: tasks
-        }
-        boards.push(board)
+        let projectTitle = document.getElementById("projectName").textContent
+        if (projectTitle) {
+            const board = {
+                title: document.getElementById("projectName").textContent,
+                tasks: tasks
+            }
+            boards.push(board)
+            alert("Your project is saved.");
+        } else {
+            alert("Your project must have a name to save.");
+        }   
     } else {
         boards.splice(0, boards.length)
         saveBoard()
