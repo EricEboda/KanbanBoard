@@ -6,6 +6,8 @@ function deleteButton(item) {
     document.getElementById(`task${item + 1}`).remove();
 }
 
+let draggedItem = null;
+
 function addButton(taskInput) {
     console.log(taskInput.value)
 
@@ -32,7 +34,7 @@ function addButton(taskInput) {
 
     const list_items = document.querySelectorAll(".list-item");
     const lists = document.querySelectorAll('.list');
-    let draggedItem = null;
+   
     for (let i = 0; i < list_items.length; i++) {
         const item = list_items[i]
         item.addEventListener('dragstart', function () {
@@ -60,7 +62,7 @@ function addButton(taskInput) {
                 this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
             })
             list.addEventListener('drop', function (e) {
-                this.append(draggedItem) 
+                this.append(draggedItem)
                 this.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
             });
         }
