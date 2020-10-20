@@ -8,7 +8,7 @@
 }
 
 html{
-    background-color: #fff5ec;
+    
 }
 
 h1{
@@ -67,6 +67,18 @@ nav{
     text-decoration: none;
   }
   
+  .boardDisplay {
+    font-family: arial;
+    font-size: 24px;
+    border: black solid 2px;
+    border-radius: 20px;
+    margin: 10rem;
+    padding:1rem;
+    text-decoration: none;
+    color: black;
+    background: rgb(26, 163, 255);
+    position: relative;
+  }
   
   footer{
     height: 10vh;

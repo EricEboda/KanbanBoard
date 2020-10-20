@@ -3,6 +3,7 @@
   --red-color : #ff737d;
   --orange-color: #f7a000;
   --green-color: #74b81f;
+  --blue-color: #2196F3;
 }
 
 * {
@@ -45,16 +46,19 @@ body {
 }
 
 .header h2{
-  font-size: 3rem;
+  font-size: 3.4rem;
 }
 
 .controls {
   grid-area: controls;
-  background-color: #e7bbbb;
+  background-color: #ebecf0;
   text-align: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2rem;
+  padding: 1rem;
 }
 
 .left {
@@ -81,6 +85,7 @@ body {
 .list{
   background: #ebecf0;
   border: 2rem;
+  
 }
 
 .list h2{
@@ -88,7 +93,8 @@ body {
   text-align: center;
   padding: 1rem;
   color: white;
-  border-radius: .1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 
 .middle h2{
@@ -139,20 +145,58 @@ ul li{
 
 }
 
-button:hover {
-  background-color: rgb(218, 54, 54);
-}
 
 button {
   flex: 1;
   cursor: pointer;
-  background-color: rgb(244, 255, 236);
+  background: var(--blue-color);
   border-radius: 5px;
-  border: solid black 1px;
-  padding: .3rem;
-
+  border: 0;
+  color: white;
+  padding: .7rem;
   justify-content: center;
   align-items: center;
+  transition: 200ms;
+}
+
+button:hover, button:focus{
+  border: none;
+  background-color: transparent;
+  outline: .1rem solid #2196F3;
+  color: #2196F3;
+}
+
+#save-btn{
+  width: 8rem;
+}
+
+#back-container{
+  position: absolute;
+  top: 2rem;
+  left: 3rem;
+ text-decoration: inherit;
+}
+
+
+#back-container:hover{
+   animation: bounce 1s;
+}
+
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  40% {
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+
+  80% {
+    -webkit-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
 }
 
 #deleteButton {
@@ -180,6 +224,48 @@ button {
   user-select: none;
 }
 
+#pencil{
+  position: relative;
+  left: .3rem;
+  top: .6em;
+}
+
+#projectName{
+  outline: none;
+}
+
+#projectName::after{
+  content: ' ';
+  outline: none;
+  width: 0px;
+  height: 1px;
+  display: block;
+  background: -webkit-linear-gradient(left, var(--red-color) 20%, var(--orange-color) 20%, var(--green-color));
+  transition: 300ms;
+}
+
+#projectName:hover::after{
+  width: 100%;
+}
+
+input[type=text]{
+  outline: none;
+  border: 0;
+  padding: .8rem;
+}
+
+.tooltiptext{
+  visibility: hidden;
+  border: 1px solid grey;
+  color: #2196F3;
+  border-radius: 0.5rem;
+  padding: 0.1rem;
+}
+
+#back-container:hover .tooltiptext{
+  visibility: visible;
+}
+
 
 /* Responsive layout*/
 @media screen and (min-width: 580px){
@@ -188,10 +274,10 @@ button {
     display: grid;
     height: 100vh;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)  ;
-    grid-template-rows: 1fr 1fr 3.5fr ;
+    grid-template-rows: 1fr 1fr 5fr ;
     grid-template-areas: 
-      'header header header' 
-      'controls controls controls'
+      'header header controls' 
+      'header header controls'
       'left middle right'; 
     gap: 1rem;
     padding: 1rem;
@@ -201,4 +287,5 @@ button {
     background: rgb(235,236,240);
     border-radius: .1rem;
   }
+
 }
