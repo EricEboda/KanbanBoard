@@ -1,19 +1,39 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="homepage.css" />
   </head>
       <nav>
           <h3 id="logo">DEW</h3>
           <div class="nav__links">
           <a href="/" class="nav__link--one">Home</a>
-          <a href="#restaurants" class="nav__link--two">User</a>
+          <a  class="nav__link--two" id="userForm" onclick="openForm()">User</a>
       </div>
       </nav>
       <body>
+          <div class="usernames">
+
+          </div>
+        <div class="form-popup">
+            <form onsubmit="createUser" class="form-container"  id="myForm">
+                <h1>Create</h1>
+                <label for="name">Enter User Name:</label>
+                <input  name="name" type="text" >
+                <label for="url">Enter User image url</label>
+                    <input type="url" name="url">
+                <button>add</button>
+            </form>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </div>
+
+            <script src="../user.js"></script>
       </body>
   
       <footer>
           <span>©DEW </span>
       </footer>
+
+    </html>
