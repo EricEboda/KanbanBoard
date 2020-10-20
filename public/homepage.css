@@ -92,3 +92,87 @@ nav{
   }
   
   
+#form-popup {
+  display: none;
+  position: absolute;
+  top:  3rem;
+  right: 15px;
+  z-index: 9;
+  box-shadow:
+  0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+.form-container {
+  display: none;
+  max-width: 300px;
+  height: 20rem;
+  padding: 10px;
+  background-color: var(--pink-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.8);
+}
+
+
+
+.form-container input[type=text], .form-container input[type=url] {
+  padding: 0.5rem;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+.form-container input[type=text]:focus, .form-container input[type=url]:focus {
+  outline: none;
+}
+
+
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+
+.form-container .cancel {
+  background-color: red;
+}
+
+
+
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+  
+
+.open-button{
+  flex: 1;
+  cursor: pointer;
+  background: dodgerblue;
+  border-radius: 5px;
+  border: 0;
+  color: white;
+  padding: .7rem;
+  justify-content: center;
+  align-items: center;
+  transition: 200ms;
+}
+
+.open-button:hover, .open-button:focus{
+  border: none;
+  background-color: transparent;
+  outline: .1rem solid #2196F3;
+  color: #2196F3;
+}

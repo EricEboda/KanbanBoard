@@ -106,7 +106,7 @@ const data = [
 sequelize.sync().then(async () => {
     const taskQueue = data.map(async (_user) => {
         const user = await User.create({name: _user.name, image: _user.image})
-        const boards = await Promise.all(_userr.boards.map(async(_menu) => {
+        const boards = await Promise.all(_user.boards.map(async(_menu) => {
             const tasks = await Promise.all(_board.tasks.map(({title}) => Task.create({title})))
             const board = await Board.create({title: _board.title})
             return board.setTasks(tasks)
