@@ -1,112 +1,61 @@
 const {User, Board, Task, sequelize} = require('./model')
 const data = [
     {
-        name: "Denise",
-        image: "https://image.freepik.com/free-vector/portrait-african-american-woman-profile-avatar-young-black-girl_102172-418.jpg",
-         boards: [
-             {
-                title: "Website Board",
-                    tasks: [
-                        {
-                            title: "Wireframe must contain have desktop and responsive design"
-                        },
-                        {
-                            title: "Website must have a server"
-                        },
-                        {
-                            title: "Website must look nice"
-                        }
-                    ]
-             },
-             
-             {
-                 title: "Party Board",
-                    tasks: [
-                        {
-                            title: "Party must have 150 invites sent"
-                        },
-
-                        {
-                            title: "Party must have catering service"
-                        }
-                    ]
-             }
-         ]
-    },
-    {
-        name: "Eric",
-        image: "https://www.kindpng.com/picc/m/235-2356295_profile-picture-man-cartoon-hd-png-download.png",
-        boards: [
+        "title": "Grocery",
+        "tasks": [
             {
-                title: "Game Project",
-                    tasks: [
-                        {
-                            title: "Design character"
-                        },
-
-                        {
-                            title: "Choose framework"
-                        },
-                        {
-                            title:"Find sound effects"
-                        }
-                    ]
+                "id": 0,
+                "text": "Go grocery shopping",
+                "status": 1
             },
-
             {
-                title:"Positive Quotes",
-                    tasks: [
-                        {
-                            title: "You always pass failure on the way to success."
-                        },
-
-                        {
-                            title: "No one is perfect - that’s why pencils have erasers."
-                        },
-                        {
-                            title: "Optimism is a happiness magnet. If you stay positive good things and good people will be drawn to you."
-                        },
-                    ]
+                "id": 1,
+                "text": "Buy 5 lemons",
+                "status": 2
             },
-
             {
-                title:"Positive Quotes 2",
-                    tasks: [
-                        {
-                            title:"If opportunity doesn’t knock, build a door."
-                        }
-                    ]
+                "id": 2,
+                "text": "Buy fruits",
+                "status": 2
+            },
+            {
+                "id": 3,
+                "text": "Buy ingredients for cake",
+                "status": 0
             }
-        ]
+        ]    
     },
-
     {
-        name:"Wisdom",
-        image:"https://media.istockphoto.com/vectors/portrait-of-smiling-afro-man-bearded-businessman-in-suit-and-orange-vector-id1135342261?b=1&k=6&m=1135342261&s=612x612&w=0&h=fj-NK4jb2M4TAAUSlDV_20MhZI8U9ZHMLXXiPMz_yi8=",
-        boards: []
-    },
-
-    {
-        name:"Amy",
-        image:"https://i.pinimg.com/736x/85/bb/63/85bb631ff0272c411f38d060825b4d3c.jpg",
-        boards:[
+        "title": "Group Project",
+        "tasks": [
             {
-                title:"Placeholder 1"
-
+                "id": 0,
+                "text": "Work on website styling",
+                "status": 1
             },
             {
-                title:"Placeholder 2"
+                "id": 1,
+                "text": "Write the HTML content",
+                "status": 2
+            },
+            {
+                "id": 2,
+                "text": "Install frameworks",
+                "status": 2
+            },
+            {
+                "id": 3,
+                "text": "Create JavaScript functions",
+                "status": 0
             }
         ]
     }
-
 ]
-
 
 sequelize.sync().then(async () => {
     const taskQueue = data.map(async (_user) => {
         const user = await User.create({name: _user.name, image: _user.image})
-        const boards = await Promise.all(_userr.boards.map(async(_menu) => {
+        const boards = await Promise.all(_user.boards.map(async(_menu) => {
             const tasks = await Promise.all(_board.tasks.map(({title}) => Task.create({title})))
             const board = await Board.create({title: _board.title})
             return board.setTasks(tasks)
@@ -114,4 +63,4 @@ sequelize.sync().then(async () => {
         return await user.setBoards(boards)
     })
     await Promise.all(taskQueue).catch(console.error)
-}) 
+})

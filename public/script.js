@@ -88,20 +88,17 @@ function addButton(taskInput) {
 }
 
 function saveBoard() {
-    if (boards.length == 0) {
-        let projectTitle = document.getElementById("projectName").textContent
-        if (projectTitle) {
-            const board = {
-                title: document.getElementById("projectName").textContent,
-                tasks: tasks
-            }
-            boards.push(board)
-            alert("Your project is saved.");
-        } else {
-            alert("Your project must have a name to save.");
-        }   
+    let projectTitle = document.getElementById("projectName").textContent
+    if (projectTitle) {
+        const board = {
+            id: window.crypto.getRandomValues(new Int8Array(3)).join(""),
+            title: document.getElementById("projectName").textContent,
+            tasks: tasks
+        }
+        boards.push(board)
+        alert("Your project is saved.");
+        localStorage.setItem("boards", JSON.stringify(boards));
     } else {
-        boards.splice(0, boards.length)
-        saveBoard()
+        alert("Your project must have a name.");
     }
 }

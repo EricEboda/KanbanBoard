@@ -1,0 +1,10 @@
+<script >
+    const params = (new URL(document.location)).searchParams
+    const id = params.get("id")
+    console.log(id);
+    const boards = JSON.parse(localStorage.getItem("boards") || "[]");
+    const board = boards.find((board) => {
+        return board.id == id
+    })
+    console.log(board)
+</script>
