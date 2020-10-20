@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/DeniseNamutebi/KanbanBoard#readme",
   "dependencies": {
+    "@handlebars/allow-prototype-access": "^1.0.3",
     "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "handlebars": "^4.7.6",
     "jest": "^26.5.3",
     "nodemon": "^2.0.5",
     "sequelize": "^6.3.5",
