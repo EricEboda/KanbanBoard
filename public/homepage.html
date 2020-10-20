@@ -10,25 +10,35 @@
           <h3 id="logo">DEW</h3>
           <div class="nav__links">
           <a href="/" class="nav__link--one">Home</a>
-          <a  class="nav__link--two" id="userForm" onclick="openForm()">User</a>
+          <button class="open-button" id="open" onclick="openForm">Create User</button>
       </div>
       </nav>
       <body>
           <div class="usernames">
+              <form onsubmit="chooseUser();return false" id="chooseForm">
+                <select id="userList">
+                </select>
+                <button>Select</button>
+            </form>
+          </div>
+          <div id="profilePic">
+         
+          </div>
+          <div id="profileName">
 
           </div>
-        <div class="form-popup">
-            <form onsubmit="createUser" class="form-container"  id="myForm">
+        <div class=".popup-form" id="form-popup">
+            <form onsubmit="createUser;return false" class="form-container"  id="myForm">
                 <h1>Create</h1>
                 <label for="name">Enter User Name:</label>
                 <input  name="name" type="text" >
-                <label for="url">Enter User image url</label>
+                <label for="url">Enter image url</label>
                     <input type="url" name="url">
-                <button>add</button>
+                <button class="btn">add</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             </form>
-            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
             </div>
-
+      
             <script src="../user.js"></script>
       </body>
   

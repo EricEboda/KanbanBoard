@@ -18,16 +18,15 @@ class Board extends Model {}
         image: DataTypes.STRING
     }, {sequelize, modelName: 'board'})    
 
-
 class Task extends Model {}
    Task.init({
         title: DataTypes.STRING,
     }, {sequelize, modelName: 'task'})   
 
 
-User.hasMany(Board, {as: "boards"})
+User.hasMany(Board,{as: "boards"})
 Board.belongsTo(User)
-Board.hasMany(Task, {as: "tasks"})
+Board.hasMany(Task,{as: "tasks"})
 Task.belongsTo(Board)
     
  module.exports = {User, Board, Task, sequelize}   
