@@ -2,7 +2,6 @@ boards = JSON.parse(localStorage.getItem("boards") || "[]");
 
 
 for (let i = 0; i < boards.length; i++) {
-    console.log(boards.length)
     let boardLink = document.createElement('a')
     boardLink.innerHTML = boards[i].title
     document.querySelector(".boardList").appendChild(boardLink)
