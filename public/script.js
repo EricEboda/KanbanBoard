@@ -87,6 +87,8 @@ function addButton(taskInput) {
     return false;
 }
 
+boards = JSON.parse(localStorage.getItem("boards") || "[]");
+
 function saveBoard() {
     let projectTitle = document.getElementById("projectName").textContent
     if (projectTitle) {
