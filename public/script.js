@@ -62,11 +62,10 @@ function addButton(taskInput) {
                 this.style.backgroundColor = 'rgb(235,236,240)';
             })
             list.addEventListener('drop', function (e) {
-                console.log(draggedItem)
                 this.append(draggedItem)
                 this.style.backgroundColor = 'rgb(235,236,240)';
 
-                let draggedId = draggedItem.id.charAt(4) - 1  
+                let draggedId = draggedItem.id.charAt(4) - 1
                 let draggedObject = tasks.find(x => x.id == draggedId);
                 let itemParent = draggedItem.parentElement.className;
 
