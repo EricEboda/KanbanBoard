@@ -20,7 +20,8 @@
                 </form>
             </section>
             <div class="save-container">
-                 <button id="save-btn">Update Board</button>
+                 <button id="save-btn" onclick="updateBoard()">Update Board</button>
+                 <button id="deleteBoard-btn">Delete Board</button>
             </div>
         </div>
         <div class="left list" id="section1">
@@ -39,13 +40,11 @@
     <script >
         const params = (new URL(document.location)).searchParams
         const id = params.get("id")
-        console.log(id);
         const boards = JSON.parse(localStorage.getItem("boards") || "[]");
         const board = boards.find((board) => {
             return board.id == id
         })
-        console.log(board)
-
+        
         document.getElementById("projectName").innerHTML = board.title
 
         for (let i = 0; i < board.tasks.length; i++) {
@@ -67,6 +66,79 @@
             </ul>
             <img src="https://www.flaticon.com/svg/static/icons/svg/1168/1168643.svg" id="deleteButton" onclick="deleteButton(${i})" height="20px" width="20px">
             `  
+        }
+
+        const list_items = document.querySelectorAll(".list-item");
+        const lists = document.querySelectorAll('.list');
+        let draggedItem = null;
+        
+        for (let i = 0; i < list_items.length; i++) {
+            const item = list_items[i]
+            item.addEventListener('dragstart', function () {
+                draggedItem = item;
+                setTimeout(function () {
+                    item.style.display = 'none';
+                }, 0)
+            })
+            item.addEventListener('dragend', function () {
+                setTimeout(function () {
+                    draggedItem.style.display = 'flex';
+                    draggedItem = null;
+                }, 0);
+            })
+            for (let j = 0; j < lists.length; j++) {
+                const list = lists[j];
+                list.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                });
+                list.addEventListener('dragenter', function (e) {
+                    e.preventDefault();
+                    this.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+                });
+                list.addEventListener('dragleave', function (e) {
+                    this.style.backgroundColor = 'rgb(235,236,240)';
+                })
+                list.addEventListener('drop', function (e) {
+                    console.log(draggedItem)
+                    this.append(draggedItem)
+                    this.style.backgroundColor = 'rgb(235,236,240)';
+                
+                    let draggedId = draggedItem.id.charAt(4) - 1
+                    let draggedObject = board.tasks.find(x => x.id == draggedId);
+                    let itemParent = draggedItem.parentElement.className;
+                
+                    if (itemParent == "left list") {
+                        draggedObject.status = 0
+                        console.log(draggedObject.status)
+                    } else if (itemParent == "middle list") {
+                        draggedObject.status = 1
+                        console.log(draggedObject.status)
+                    } else {
+                        draggedObject.status = 2
+                        console.log(draggedObject.status)
+                    }
+                    
+                });
+            }
+        }
+
+        function deleteBoard() {
+            for(let i = 0; i < boards.length; i++) {
+                if (boards[0].id == board.id) {
+                    const deletion = boards[0].id
+
+                    let index = boards.map(x => {
+                        return x.id;
+                    }).indexOf(deletion)
+
+                    boards.splice(index, 1);
+                }
+            }
+        }
+
+        function updateBoard() {
+            board.title = document.getElementById("projectName").textContent
+            return false;
         }
     </script>  
 </body>
