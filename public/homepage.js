@@ -1,9 +1,7 @@
-let boards = localStorage.getItem("boards") || [];
-console.log(boards)
+boards = JSON.parse(localStorage.getItem("boards") || "[]");
+
 
 for (let i = 0; i < boards.length; i++) {
-    console.log(boards.length)
-    boards = JSON.parse(localStorage.getItem("boards") || "[]");
     console.log(boards.length)
     let boardLink = document.createElement('a')
     boardLink.innerHTML = `Board: ${boards[i].title}`
