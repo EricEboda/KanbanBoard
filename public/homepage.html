@@ -6,49 +6,55 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="homepage.css" />
   </head>
-      <nav>
-          <h3 id="logo">DEW</h3>
-          <div class="nav__links">
-          <a href="/" class="nav__link--one">Home</a>
-          <button class="open-button" id="open" onclick="openForm">Create User</button>
-      </div>
-      </nav>
+  <div class="page-grid">
       <body>
-          <div class="usernames">
-              <form onsubmit="chooseUser();return false" id="chooseForm">
+          <div class="settings">
+            <div class="usernames">
+                <button class="open-button" id="open" onclick="openForm ">NEW USERS</button>
+                
+            </div>
+            <form onsubmit="chooseUser();return false" id="chooseForm">
+                <label>SELECT USER:</label>
                 <select id="userList">
                 </select>
                 <button>Select</button>
             </form>
-          </div>
-          <div id="profilePic">
-         
-          </div>
-          <div id="profileName">
-
-          </div>
-        <div class=".popup-form" id="form-popup">
-            <form onsubmit="createUser;return false" class="form-container"  id="myForm">
-                <h1>Create</h1>
-                <label for="name">Enter User Name:</label>
-                <input  name="name" type="text" >
-                <label for="url">Enter image url</label>
-                    <input type="url" name="url">
-                <button class="btn">add</button>
-                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-            </form>
+            <div class="userProfiles">
+                <div id="profilePic">
+                </div>
+                <div id="profileName">
+                </div>
             </div>
+            <div class="new">
+              <a href="/" class="nav__link--one"><button id="new-btn">NEW BOARD</button></a>
+          </div>
+           
+          <div class="popup-form" id="form-popup">
+                <form onsubmit="createUser;return false" class="form-container"  id="myForm">
+                    <h1> New Users</h1>
+                    <label for="name">Enter User Name:</label>
+                    <input  name="name" type="text" >
+                    <label for="url">Enter image url</label>
+                        <input type="url" name="url">
+                    <button class="btn">add</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </form>
+               
+            </div>
+           <small>ꓘANBAN BOARD by ©DEW</small>
+        </div>
 
+            <div class="boards">  
+                <h1 class="board-title">Boards</h1>
+                <div class="boardList">
+                </div>
             </div>  
-            <div class="boardList">
-            </div>
-            <script src="/homepage.js"></script>
+            
 
+
+        <script src="/homepage.js"></script>
             <script src="/user.js"></script>
-      </body>
+       </body>
   
-      <footer>
-          <span>©DEW </span>
-      </footer>
-
+    </div>
     </html>

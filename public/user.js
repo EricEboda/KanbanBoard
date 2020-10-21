@@ -47,4 +47,5 @@ openDisplay.addEventListener('click', openForm)
 
 const closeForm = () => {
     document.getElementById("myForm").style.display = "none";
+    document.getElementById("form-popup").style.display = "none";
 }
