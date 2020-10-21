@@ -59,6 +59,7 @@ body {
   align-items: center;
   gap: 2rem;
   padding: 1rem;
+  border-radius: 8px;
 }
 
 .left {
@@ -93,8 +94,8 @@ body {
   text-align: center;
   padding: 1rem;
   color: white;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .middle h2{
@@ -118,7 +119,7 @@ body {
   display: flex;
   flex-direction: row;
   background-color: white;
-  border-radius: 5px;
+  border-radius: 8px;
   word-wrap: break-word;
   width: 80%;
   padding: 1rem;
@@ -258,7 +259,7 @@ input[type=text]{
   visibility: hidden;
   border: 1px solid grey;
   color: #2196F3;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   padding: 0.1rem;
 }
 
@@ -286,6 +287,8 @@ input[type=text]{
   .list{
     background: rgb(235,236,240);
     border-radius: .1rem;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
 
 }
