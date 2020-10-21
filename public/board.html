@@ -21,7 +21,7 @@
             </section>
             <div class="save-container">
                  <button id="save-btn" onclick="updateBoard()">Update Board</button>
-                 <button id="deleteBoard-btn">Delete Board</button>
+                 <button id="deleteBoard-btn" onclick="deleteBoard()">Delete Board</button>
             </div>
         </div>
         <div class="left list" id="section1">
@@ -180,15 +180,20 @@
         }
 
         function deleteBoard() {
-            for(let i = 0; i < boards.length; i++) {
-                if (boards[0].id == board.id) {
-                    const deletion = boards[0].id
+            if(confirm("Are you sure you want to delete your board permanently?")) {
+                console.log("Running confirm")
+                for(let i = 0; i < boards.length; i++) {
+                    if (boards[i].id == board.id) {
+                        const deletion = boards[i].id
 
-                    let index = boards.map(x => {
-                        return x.id;
-                    }).indexOf(deletion)
+                        let index = boards.map(x => {
+                            return x.id;
+                        }).indexOf(deletion)
 
-                    boards.splice(index, 1);
+                        boards.splice(index, 1);
+                        localStorage.setItem("boards", JSON.stringify(boards));
+                        window.location.replace("/homepage.html");
+                    }
                 }
             }
         }
@@ -197,7 +202,6 @@
             board.title = document.getElementById("projectName").textContent
             localStorage.setItem("boards", JSON.stringify(boards));
             alert("Your board has been updated.");
-            window.location.replace("/homepage.html");
             return false;
         }
     </script>  
