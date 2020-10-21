@@ -2,7 +2,63 @@ let tasks = [];
 let boards = [];
 let draggedItem = null;
 
-/* DELETE TASK FUNCTION */
+input = document.querySelector('#projectName');
+settings = {
+    maxLen: 35,
+}
+keys = {
+    'backspace': 8,
+    'shift': 16,
+    'ctrl': 17,
+    'alt': 18,
+    'delete': 46,
+    // 'cmd':
+    'leftArrow': 37,
+    'upArrow': 38,
+    'rightArrow': 39,
+    'downArrow': 40,
+}
+utils = {
+    special: {},
+    navigational: {},
+    isSpecial(e) {
+        return typeof this.special[e.keyCode] !== 'undefined';
+    },
+    isNavigational(e) {
+        return typeof this.navigational[e.keyCode] !== 'undefined';
+    }
+}
+utils.special[keys['backspace']] = true;
+utils.special[keys['shift']] = true;
+utils.special[keys['ctrl']] = true;
+utils.special[keys['alt']] = true;
+utils.special[keys['delete']] = true;
+utils.navigational[keys['upArrow']] = true;
+utils.navigational[keys['downArrow']] = true;
+utils.navigational[keys['leftArrow']] = true;
+utils.navigational[keys['rightArrow']] = true;
+input.addEventListener('keydown', function(event) {
+  let len = event.target.innerText.trim().length;
+  hasSelection = false;
+  selection = window.getSelection();
+  isSpecial = utils.isSpecial(event);
+  isNavigational = utils.isNavigational(event);
+  
+  if (selection) {
+    hasSelection = !!selection.toString();
+  }
+  
+  if (isSpecial || isNavigational) {
+    return true;
+  }
+  
+  if (len >= settings.maxLen && !hasSelection) {
+    event.preventDefault();
+    return false;
+  }
+  
+});
+
 function deleteButton(item) {
     tasks.splice(item, 1)
     document.getElementById(`task${item + 1}`).remove();
@@ -97,9 +153,10 @@ function saveBoard() {
             tasks: tasks
         }
         boards.push(board)
-        alert("Your project is saved.");
+        alert("Your board has been saved.");
+        window.location.replace("/homepage.html");
         localStorage.setItem("boards", JSON.stringify(boards));
     } else {
-        alert("Your project must have a name.");
+        alert("Your board must have a name.");
     }
 }
