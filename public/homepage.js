@@ -1,5 +1,5 @@
 boards = JSON.parse(localStorage.getItem("boards") || "[]");
-
+document.getElementById("userList").innerHTML = `${users.map(user => `<option value="${user.id}">${user.name}</option>`).join("")}`
 
 for (let i = 0; i < boards.length; i++) {
     let boardLink = document.createElement('a')
