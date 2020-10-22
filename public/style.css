@@ -268,6 +268,38 @@ input[type=text]{
 }
 
 
+.users-bar{
+  grid-area: users;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  background-color: #9435a9;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: #ebecf0;
+}
+
+::-webkit-scrollbar-track {
+  background: #9435a9;
+  max-height: 3px;
+
+}
+ 
+::-webkit-scrollbar-thumb { 
+  background: #555; 
+  border-radius: 5rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 /* Responsive layout*/
 @media screen and (min-width: 580px){
   .grid-container {
@@ -275,10 +307,11 @@ input[type=text]{
     display: grid;
     height: 100vh;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)  ;
-    grid-template-rows: 1fr 1fr 5fr ;
+    grid-template-rows: 1fr 1fr  1fr 5fr ;
     grid-template-areas: 
       'header header controls' 
       'header header controls'
+      "users users users"
       'left middle right'; 
     gap: 1rem;
     padding: 1rem;

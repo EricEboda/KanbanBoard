@@ -82,6 +82,7 @@ function addButton(taskInput) {
     taskDiv.setAttribute("draggable", "true");
            
     document.getElementById(`task${tasks.length}`).innerHTML += `
+    <aside ondragover="event.preventDefault()"  style="border: 1px solid red; width: 2rem; height: 2rem;"></aside>
     <ul>
         ${tasks.slice(tasks.length - 1, tasks.length).map(task => `<li>${task.text}</li>`).join("")}
     </ul>
@@ -160,3 +161,7 @@ function saveBoard() {
         alert("Your board must have a name.");
     }
 }
+
+const allUserData = (localStorage.getItem('usersData') ? JSON.parse(localStorage.getItem('usersData')) : [])
+        const allUserDisplay = document.getElementById('displayUser')
+        allUserDisplay.innerHTML =  allUserData.map(user => `<div class="displayList-item" draggable="true"> <p>${user.name}</p> <img height="40px" width ="40px" src="${user.url}"></div>`).join("")

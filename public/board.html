@@ -22,6 +22,10 @@
                  <button id="deleteBoard-btn" onclick="deleteBoard()">Delete Board</button>
             </div>
         </div>
+
+        <div class="users-bar" id="displayUser">
+        </div>
+        
         <div class="left list" id="section1">
             <h2 class="unselectable">To Do</h2>
         </div>
@@ -233,6 +237,11 @@
             alert("Your board has been updated.");
             return false;
         }
+
+        const users = (localStorage.getItem('usersData') ? JSON.parse(localStorage.getItem('usersData')) : [])
+        const userDisplay = document.getElementById('displayUser')
+        userDisplay.innerHTML = users.map(user => `<div class="displayList-item" draggable="true"> <p>${user.name}</p> <img height="40px" width ="40px" src="${user.url}"></div>`).join("")
+
     </script>  
 </body>
 </html>
