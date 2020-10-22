@@ -167,5 +167,5 @@ function saveBoard() {
 }
 
 const allUserData = (localStorage.getItem('usersData') ? JSON.parse(localStorage.getItem('usersData')) : [])
-        const allUserDisplay = document.getElementById('displayUser')
-        allUserDisplay.innerHTML =  allUserData.map(user => `<div class="displayList-item" draggable="true"> <p>${user.name}</p> <img height="40px" width ="40px" src="${user.url}"></div>`).join("")
+const allUserDisplay = document.getElementById('displayUser')
+allUserDisplay.innerHTML =  allUserData.map(user => `<div class="displayList-item" draggable="true"> <p>${user.name}</p> <img height="40px" width ="40px" src="${user.url}"></div>`).join("")
