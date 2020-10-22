@@ -23,11 +23,8 @@ const createUser = () => {
 const chooseUser = () => {
     const id = document.getElementById('userList').value
     const userData = users.findIndex(user => (id === user.id))
-    //console.log(id)
-    //console.log(users[userData])  
     
     if (id === users[userData].id ){
-        //document.getElementById('profileName').innerHTML = `<div id="${users[userData].id}"><p>${users[userData].name}</p> <img height="40px" width ="40px" src="${users[userData].url}"></div>`
         document.getElementById('avatar-placeholder').src = users[userData].url
         document.getElementById('name-placeholder').innerHTML = users[userData].name
     }
@@ -36,6 +33,3 @@ const chooseUser = () => {
 localStorage.setItem("usersData", JSON.stringify(users)); 
 let usersData = JSON.parse(localStorage.getItem("usersData") || "[]")
 console.log("# of users:" + usersData.length);
-
-
-
