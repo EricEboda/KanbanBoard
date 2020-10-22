@@ -65,6 +65,10 @@ function deleteButton(item) {
     document.getElementById(`task${item + 1}`).remove();
 }
 
+function deleteUserButton(el) {
+    if (el.parentElement.className == "image-container") { el.remove() }
+}
+
 function addButton(taskInput) {
     console.log(taskInput.value)
 
@@ -178,6 +182,7 @@ function addButton(taskInput) {
                 if (!(userDraggedItem == null)) {
                     if (!(this.hasChildNodes())) {
                         this.append(clone)
+                        console.log(clone)
                     }
                     this.style.backgroundColor = 'rgb(235,236,240)';
                 }
@@ -208,4 +213,4 @@ function saveBoard() {
 
 const allUserData = (localStorage.getItem('usersData') ? JSON.parse(localStorage.getItem('usersData')) : [])
 const allUserDisplay = document.getElementById('displayUser')
-allUserDisplay.innerHTML =  allUserData.map(user => `<div> <p>${user.name}</p> <img height="40px" width ="40px" draggable="true" class="displayList-item" src="${user.url}"></div>`).join("")
+allUserDisplay.innerHTML =  allUserData.map(user => `<div> <p>${user.name}</p> <img height="40px" width ="40px" draggable="true" class="displayList-item" onclick="deleteUserButton(this)" src="${user.url}"></div>`).join("")
