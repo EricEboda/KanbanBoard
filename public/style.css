@@ -24,6 +24,7 @@ body {
   grid-template-areas: 
     'header ' 
     'controls'
+    'users'
     'left' 
     'middle' 
     'right';
@@ -86,13 +87,15 @@ body {
 .list{
   background: #ebecf0;
   border: 2rem;
+  overflow-y: scroll;
+  min-height: 20vh;
   
 }
 
 .list h2{
   width: 100%;
   text-align: center;
-  padding: 1rem;
+  padding: .3rem;
   color: white;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -121,7 +124,7 @@ body {
   background-color: white;
   border-radius: 8px;
   word-wrap: break-word;
-  width: 80%;
+  width: 50%;
   padding: 1rem;
   box-shadow:
   0 2.8px 2.2px rgba(0, 0, 0, 0.034),
@@ -272,11 +275,17 @@ input[type=text]{
   grid-area: users;
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
+  overflow-x:  auto;
   overflow-y: hidden;
   background-color: #9435a9;
   padding: 1rem;
   border-radius: 8px;
+  gap: 1rem;
+  min-height: 15vh;
+}
+
+.users-bar img{
+  border-radius: 50%;
 }
 
 
@@ -286,7 +295,7 @@ input[type=text]{
 }
 
 ::-webkit-scrollbar-track {
-  background: #9435a9;
+  background: #ebecf0;
   max-height: 3px;
 
 }
@@ -294,6 +303,7 @@ input[type=text]{
 ::-webkit-scrollbar-thumb { 
   background: #555; 
   border-radius: 5rem;
+  max-height: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -331,6 +341,18 @@ aside{
     border-radius: .1rem;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    overflow-y: auto;
   }
+
+  .list h2{
+    padding: 1rem;
+
+  }
+
+  .list-item{
+    width: 80%
+  }
+
+  
 
 }
