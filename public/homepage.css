@@ -99,9 +99,9 @@ nav{
   }
   
 
-
+/*changed code for open*/
 #form-popup{
- display: none ;
+ display:  none;
   position: absolute;
   top:  3rem;
   right: 15px;
@@ -313,6 +313,14 @@ small{
   color: #474d4d;
 }
 
+.displaytwo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}
+
 @media screen and (min-width: 580px){
   .page-grid{
     display: grid;
@@ -333,7 +341,7 @@ small{
     visibility: visible;
     position: absolute;
     bottom: 1rem;
-    left: 2rem;
+    left: .5rem;
   }
 
   h1{
@@ -344,5 +352,9 @@ small{
   .board-title{
     padding-top: 1rem;
     background: #f6f7fb;
+  }
+
+  .boards{
+    overflow-y: scroll;
   }
 }

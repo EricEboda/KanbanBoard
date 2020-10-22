@@ -9,17 +9,22 @@
   <div class="page-grid">
       <body>
           <div class="settings">
-            <div class="usernames">
-                <button class="open-button" id="open" onclick="openForm ">NEW USERS</button>
-                
-            </div>
+            <div class="displaytwo">
+                <img src="https://www.pngkit.com/png/full/302-3022217_roger-berry-avatar-placeholder.png" height="70px" width="70px" border-radius="50%" id="avatar-placeholder">
+                <p id="name-placeholder">Username</p>
+           </div>
             <form onsubmit="chooseUser();return false" id="chooseForm">
                 <label>SELECT USER:</label>
                 <select id="userList">
                 </select>
                 <button>Select</button>
             </form>
+            <div class="usernames">
+                <button class="open-button" id="open-btn" onclick="openForm()">NEW USERS</button>
+                
+            </div>
             <div class="userProfiles">
+                
                 <div id="profilePic">
                 </div>
                 <div id="profileName">
@@ -51,9 +56,9 @@
             </div>  
             
 
-
-        <script src="/homepage.js"></script>
             <script src="/user.js"></script>
+        <script src="/homepage.js"></script>
+            
        </body>
   
     </div>
