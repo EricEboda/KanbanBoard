@@ -1,6 +1,7 @@
 let tasks = [];
 let boards = [];
 let draggedItem = null;
+let userDraggedItem = null;
 
 input = document.querySelector('#projectName');
 settings = {
@@ -82,7 +83,7 @@ function addButton(taskInput) {
     taskDiv.setAttribute("draggable", "true");
            
     document.getElementById(`task${tasks.length}`).innerHTML += `
-    <aside ondragover="event.preventDefault()"  style="border: 1px solid red; width: 2rem; height: 2rem;"></aside>
+    <aside ondragover="event.preventDefault()" class="image-container"  style="border: 1px solid red; width: 2rem; height: 2rem;"></aside>
     <ul>
         ${tasks.slice(tasks.length - 1, tasks.length).map(task => `<li>${task.text}</li>`).join("")}
     </ul>
@@ -102,8 +103,10 @@ function addButton(taskInput) {
         })
         item.addEventListener('dragend', function () {
             setTimeout(function () {
-                draggedItem.style.display = 'flex';
-                draggedItem = null;
+                if (!(draggedItem == null)) {
+                    draggedItem.style.display = 'flex';
+                    draggedItem = null;
+                }
             }, 0);
         })
         for (let j = 0; j < lists.length; j++) {
@@ -113,39 +116,76 @@ function addButton(taskInput) {
             });
             list.addEventListener('dragenter', function (e) {
                 e.preventDefault();
-                this.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+                if (!(draggedItem == null)) {this.style.backgroundColor = 'rgba(0, 0, 0, 0.3)'}
             });
             list.addEventListener('dragleave', function (e) {
                 this.style.backgroundColor = 'rgb(235,236,240)';
             })
             list.addEventListener('drop', function (e) {
-                this.append(draggedItem)
-                this.style.backgroundColor = 'rgb(235,236,240)';
+                if (!(draggedItem == null)) {
+                    this.append(draggedItem)
+                    this.style.backgroundColor = 'rgb(235,236,240)';
 
-                let draggedId = draggedItem.id.charAt(4) - 1
-                let draggedObject = tasks.find(x => x.id == draggedId);
-                let itemParent = draggedItem.parentElement.className;
+                    let draggedId = draggedItem.id.charAt(4) - 1
+                    let draggedObject = tasks.find(x => x.id == draggedId);
+                    let itemParent = draggedItem.parentElement.className;
 
-                if (itemParent == "left list") {
-                    draggedObject.status = 0
-                    console.log(draggedObject.status)
-                } else if (itemParent == "middle list") {
-                    draggedObject.status = 1
-                    console.log(draggedObject.status)
-                } else {
-                    draggedObject.status = 2
-                    console.log(draggedObject.status)
+                    if (itemParent == "left list") {
+                        draggedObject.status = 0
+                        console.log(draggedObject.status)
+                    } else if (itemParent == "middle list") {
+                        draggedObject.status = 1
+                        console.log(draggedObject.status)
+                    } else {
+                        draggedObject.status = 2
+                        console.log(draggedObject.status)
+                    }
                 }
-                
+            });
+        }
+    }
+
+    const userList_items = document.querySelectorAll(".displayList-item");
+    const userLists = document.querySelectorAll('.image-container');
+    let clone = null
+   
+    for (let i = 0; i < userList_items.length; i++) {
+        const userItem = userList_items[i]
+        userItem.addEventListener('dragstart', function () {
+            userDraggedItem = userItem;
+            clone = userDraggedItem.cloneNode(true)
+            setTimeout(function () {
+            }, 0)
+        })
+        userItem.addEventListener('dragend', function () {
+            setTimeout(function () {
+                userDraggedItem = null;
+            }, 0);
+        })
+        for (let j = 0; j < userLists.length; j++) {
+            const userList = userLists[j];
+            userList.addEventListener('dragover', function(e) {
+                e.preventDefault();
+            });
+            userList.addEventListener('dragenter', function (e) {
+                e.preventDefault();
+                if (!(userDraggedItem == null)) {this.style.backgroundColor = 'rgba(0, 0, 0, 0.3)'}
+            });
+            userList.addEventListener('dragleave', function (e) {
+                this.style.backgroundColor = 'rgb(235,236,240)';
+            })
+            userList.addEventListener('drop', function (e) {
+                if (!(userDraggedItem == null)) {
+                    if (!(this.hasChildNodes())) {
+                        this.append(clone)
+                    }
+                    this.style.backgroundColor = 'rgb(235,236,240)';
+                }
             });
         }
     }
     return false;
 }
-
-const storedUsers = (localStorage.getItem('usersData') ? JSON.parse(localStorage.getItem('usersData')) : [])
-const userDisplay = document.getElementById('displayUser')
-userDisplay.innerHTML = storedUsers.map(user => `<div class="displayList-item" draggable="true"> <p>${user.name}</p> <img height="40px" width ="40px" src="${user.url}"></div>`).join("")
 
 boards = JSON.parse(localStorage.getItem("boards") || "[]");
 
@@ -168,4 +208,4 @@ function saveBoard() {
 
 const allUserData = (localStorage.getItem('usersData') ? JSON.parse(localStorage.getItem('usersData')) : [])
 const allUserDisplay = document.getElementById('displayUser')
-allUserDisplay.innerHTML =  allUserData.map(user => `<div class="displayList-item" draggable="true"> <p>${user.name}</p> <img height="40px" width ="40px" src="${user.url}"></div>`).join("")
+allUserDisplay.innerHTML =  allUserData.map(user => `<div> <p>${user.name}</p> <img height="40px" width ="40px" draggable="true" class="displayList-item" src="${user.url}"></div>`).join("")
