@@ -178,29 +178,33 @@
                     const list = lists[j];
                     list.addEventListener('dragover', function(e) {
                         e.preventDefault();
+
                     });
                     list.addEventListener('dragenter', function (e) {
                         e.preventDefault();
-                        this.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+                        if (!(draggedItem == null)) {this.style.backgroundColor = 'rgba(0, 0, 0, 0.3)'}
                     });
                     list.addEventListener('dragleave', function (e) {
                         this.style.backgroundColor = 'rgb(235,236,240)';
                     })
                     list.addEventListener('drop', function (e) {
-                        this.append(draggedItem)
-                        this.style.backgroundColor = 'rgb(235,236,240)';
+                        if (!(draggedItem == null)) {
+                            this.append(draggedItem)
+                            this.style.backgroundColor = 'rgb(235,236,240)';
                     
-                        let draggedId = draggedItem.id.charAt(4) - 1
-                        let draggedObject = board.tasks.find(x => x.id == draggedId);
-                        let itemParent = draggedItem.parentElement.className;
-                    
-                        if (itemParent == "left list") {
-                            draggedObject.status = 0
-                        } else if (itemParent == "middle list") {
-                            draggedObject.status = 1
-                        } else {
-                            draggedObject.status = 2
+                            let draggedId = draggedItem.id.charAt(4) - 1
+                            let draggedObject = board.tasks.find(x => x.id == draggedId);
+                            let itemParent = draggedItem.parentElement.className;
+                            
+                            if (itemParent == "left list") {
+                                draggedObject.status = 0
+                            } else if (itemParent == "middle list") {
+                                draggedObject.status = 1
+                            } else {
+                                draggedObject.status = 2
+                            }
                         }
+                        
 
                     });
                 }

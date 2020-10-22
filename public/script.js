@@ -143,6 +143,10 @@ function addButton(taskInput) {
     return false;
 }
 
+const storedUsers = (localStorage.getItem('usersData') ? JSON.parse(localStorage.getItem('usersData')) : [])
+const userDisplay = document.getElementById('displayUser')
+userDisplay.innerHTML = storedUsers.map(user => `<div class="displayList-item" draggable="true"> <p>${user.name}</p> <img height="40px" width ="40px" src="${user.url}"></div>`).join("")
+
 boards = JSON.parse(localStorage.getItem("boards") || "[]");
 
 function saveBoard() {
@@ -163,5 +167,5 @@ function saveBoard() {
 }
 
 const allUserData = (localStorage.getItem('usersData') ? JSON.parse(localStorage.getItem('usersData')) : [])
-        const allUserDisplay = document.getElementById('displayUser')
-        allUserDisplay.innerHTML =  allUserData.map(user => `<div class="displayList-item" draggable="true"> <p>${user.name}</p> <img height="40px" width ="40px" src="${user.url}"></div>`).join("")
+const allUserDisplay = document.getElementById('displayUser')
+allUserDisplay.innerHTML =  allUserData.map(user => `<div class="displayList-item" draggable="true"> <p>${user.name}</p> <img height="40px" width ="40px" src="${user.url}"></div>`).join("")
