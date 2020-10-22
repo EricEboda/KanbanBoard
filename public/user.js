@@ -45,13 +45,6 @@ console.log("# of users:" + usersData.length);
 
 
 
-
-
-
-
-
-
-
 const userDisplay = document.getElementById('displayUser')
 userDisplay.innerHTML = users.map(user => `<div class="displayList-item" draggable="true"> <p>${user.name}</p> <img height="40px" width ="40px" src="${user.url}"></div>`).join("")
 

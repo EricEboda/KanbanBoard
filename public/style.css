@@ -300,6 +300,15 @@ input[type=text]{
   background: #555; 
 }
 
+.displayList-item img{
+  border-radius: 50%;
+
+}
+
+aside{
+  border-radius: 50%;
+}
+
 /* Responsive layout*/
 @media screen and (min-width: 580px){
   .grid-container {
