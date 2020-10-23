@@ -2,8 +2,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="homepage.css" />
   </head>
   <div class="page-grid">
@@ -14,10 +12,10 @@
                 <p id="name-placeholder">Username</p>
            </div>
             <form onsubmit="chooseUser();return false" id="chooseForm">
-                <label>SELECT USER:</label>
+                <label><small id="form-small">SELECT USER:</small></label>
                 <select id="userList">
                 </select>
-                <button>Select</button>
+                <button class="select-form">Select</button>
             </form>
             <div class="usernames">
                 <button class="open-button" id="open-btn" onclick="openForm()">NEW USERS</button>
@@ -30,28 +28,27 @@
                 <div id="profileName">
                 </div>
             </div>
-            <div class="new">
-              <a href="/" class="nav__link--one"><button id="new-btn">NEW BOARD</button></a>
-          </div>
            
           <div class="popup-form" id="form-popup">
                 <form onsubmit="createUser;return false" class="form-container"  id="myForm">
-                    <h1> New Users</h1>
+                    <h1>Create User</h1>
                     <label for="name">Enter User Name:</label>
-                    <input  name="name" type="text" >
-                    <label for="url">Enter image url</label>
-                        <input type="url" name="url">
-                    <button class="btn">add</button>
-                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                    <input  name="name" type="text" required>
+                    <label for="url">Enter image url:</label>
+                        <input type="url" name="url" required>
+                    <button class="btn add-form">Add</button>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
                 </form>
                
             </div>
-           <small>ꓘANBAN BOARD by ©DEW</small>
         </div>
 
             <div class="boards">  
                 <h1 class="board-title">Boards</h1>
                 <div class="boardList">
+                </div>
+                <div class="new">
+                    <a href="/" class="nav__link--one"><button id="new-btn"><img src="https://www.flaticon.com/svg/static/icons/svg/1828/1828817.svg" height="70px" width="70px"></button></a>
                 </div>
             </div>  
             

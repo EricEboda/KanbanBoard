@@ -4,6 +4,7 @@ let draggedItem = null;
 let userDraggedItem = null;
 
 input = document.querySelector('#projectName');
+inputTwo = document.querySelector("#projectDescription")
 settings = {
     maxLen: 35,
 }
@@ -38,7 +39,9 @@ utils.navigational[keys['upArrow']] = true;
 utils.navigational[keys['downArrow']] = true;
 utils.navigational[keys['leftArrow']] = true;
 utils.navigational[keys['rightArrow']] = true;
-input.addEventListener('keydown', function(event) {
+ 
+
+function keyDown(event) {
   let len = event.target.innerText.trim().length;
   hasSelection = false;
   selection = window.getSelection();
@@ -58,7 +61,10 @@ input.addEventListener('keydown', function(event) {
     return false;
   }
   
-});
+};
+
+input.addEventListener('keydown', keyDown)
+inputTwo.addEventListener('keydown', keyDown)
 
 function deleteButton(item) {
     tasks.splice(item, 1)
@@ -87,11 +93,15 @@ function addButton(taskInput) {
     taskDiv.setAttribute("draggable", "true");
            
     document.getElementById(`task${tasks.length}`).innerHTML += `
-    <aside ondragover="event.preventDefault()" class="image-container"  style="border: 1px solid red; width: 2rem; height: 2rem;"></aside>
-    <ul>
-        ${tasks.slice(tasks.length - 1, tasks.length).map(task => `<li>${task.text}</li>`).join("")}
-    </ul>
-    <img src="https://www.flaticon.com/svg/static/icons/svg/1168/1168643.svg" id="deleteButton" onclick="deleteButton(${tasks.length - 1})" height="20px" width="20px">
+    <div class="assign__task">
+        <ul>
+          ${tasks.slice(tasks.length - 1, tasks.length).map(task => `<li>${task.text}</li>`).join("")}
+        </ul>
+         <img src="https://www.flaticon.com/svg/static/icons/svg/565/565491.svg" id="deleteButton" onclick="deleteButton(${tasks.length - 1})" height="20px" width="20px">
+    </div>
+    <div class="assign-user">
+     <aside ondragover="event.preventDefault()" class="image-container"  style="border: 1px solid grey; width: 2rem; height: 2rem;"></aside>
+    </div>
     `
 
     const list_items = document.querySelectorAll(".list-item");
@@ -200,6 +210,7 @@ function saveBoard() {
         const board = {
             id: window.crypto.getRandomValues(new Int8Array(3)).join(""),
             title: document.getElementById("projectName").textContent,
+            des: document.getElementById('projectDescription').textContent,
             tasks: tasks
         }
         boards.push(board)
