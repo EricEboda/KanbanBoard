@@ -197,7 +197,6 @@ button, button:focus{
 }
 
 
-
 /*
 
 .back-container{
@@ -326,8 +325,8 @@ input[type=text]{
     gap: 1rem;
     padding: 1rem;
     
-  } 
-
+  }
+  
   .list{
     background: rgb(235,236,240);
     border-radius: .1rem;

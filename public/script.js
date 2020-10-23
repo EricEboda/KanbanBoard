@@ -1,5 +1,6 @@
 let tasks = [];
 let boards = [];
+let taskedUsers = [];
 let draggedItem = null;
 let userDraggedItem = null;
 
@@ -72,6 +73,12 @@ function deleteButton(item) {
 }
 
 function deleteUserButton(el) {
+    for (let i = 0; i < taskedUsers.length; i++) {
+        if (el.id == taskedUsers[i].id) {
+            taskedUsers.splice(i, 1)
+        }
+    }
+    console.log(taskedUsers)
     if (el.parentElement.className == "image-container") { el.remove() }
 }
 
@@ -191,9 +198,19 @@ function addButton(taskInput) {
             userList.addEventListener('drop', function (e) {
                 if (!(userDraggedItem == null)) {
                     if (!(this.hasChildNodes())) {
+
                         this.append(clone)
+                        clone.id = `${this.parentElement.parentElement.id} child`
+                        clone.className = "displayList-item droppedItem"
                         console.log(clone)
+                        const cloneObject = {
+                            id: `${this.parentElement.parentElement.id} child`,
+                            url: this.firstElementChild.src,
+                        }
+                        taskedUsers.push(cloneObject)
+                        console.log(taskedUsers)
                     }
+
                     this.style.backgroundColor = 'rgb(235,236,240)';
                 }
             });
