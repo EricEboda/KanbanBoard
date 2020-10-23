@@ -9,11 +9,10 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+
 
 /* The grid container */
 .grid-container {
@@ -23,7 +22,6 @@ body {
   grid-template-rows: 1fr 1fr 2fr 2fr 2fr;
   grid-template-areas: 
     'header ' 
-    'controls'
     'users'
     'left' 
     'middle' 
@@ -43,26 +41,24 @@ body {
 .header{
   grid-area: header;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  flex-direction: row;
+  padding-bottom: 2rem;
+
+  
 }
 
 .header h2{
   font-size: 3.4rem;
 }
 
-.controls {
-  grid-area: controls;
-  background-color: #ebecf0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  padding: 1rem;
-  border-radius: 8px;
+.add-section{
+  position: fixed;
+  bottom: 3rem;
+  right: 2rem;
 }
+
 
 .left {
   grid-area: left;
@@ -98,8 +94,8 @@ body {
   text-align: center;
   padding: .3rem;
   color: white;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .middle h2{
@@ -120,10 +116,11 @@ body {
 
 
 .list-item {
-  display: flex;
-  flex-direction: row;
+  display: ;
+  flex-direction: column;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 3px;
+  min-height: 4rem;
   word-wrap: break-word;
   width: 50%;
   padding: 1rem;
@@ -138,11 +135,32 @@ body {
   margin-top: 1rem;
   margin-left: auto;
   margin-right: auto;
-  
+  justify-content: center;
+  align-items: center;
 }
 
-ul {
+.assign__task{
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 1rem;
+  justify-content: space-between;
+  gap: 1rem;
+  flex: 1;
+  width: 100%;
+}
+
+.assign__task ul{
+  flex: 1;
   list-style-type: none;
+  padding: 0;
+}
+
+.assign__task img{
+  flex: 1;
+}
+
+.list-item img{
+  flex: 1;
 }
 
 ul li{
@@ -150,74 +168,56 @@ ul li{
 
 }
 
-
-button {
+.assign-user{
   flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
   cursor: pointer;
-  background: var(--blue-color);
-  border-radius: 5px;
+}
+
+
+button, button:focus{
+  outline: none;
   border: 0;
+  cursor: pointer;
+}
+
+
+.save-btn{
+  background: dodgerblue;
+  padding: .9rem;
+  border: 8px;
   color: white;
-  padding: .7rem;
-  justify-content: center;
-  align-items: center;
-  transition: 200ms;
 }
 
-button:hover, button:focus{
-  border: none;
-  background-color: transparent;
-  outline: .1rem solid #2196F3;
-  color: #2196F3;
+.save-container{
+
 }
 
-#save-btn{
-  width: 8rem;
-}
 
-#back-container{
+
+
+.back-container{
   position: absolute;
-  top: 2rem;
-  left: 3rem;
+  top: 0.5rem;
+  right: 8.1rem;
  text-decoration: inherit;
 }
 
-
-#back-container:hover{
-   animation: bounce 1s;
-}
-
-@keyframes bounce {
-  0%, 20%, 60%, 100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-
-  40% {
-    -webkit-transform: translateY(-20px);
-    transform: translateY(-20px);
-  }
-
-  80% {
-    -webkit-transform: translateY(-10px);
-    transform: translateY(-10px);
-  }
-}
-
-#deleteButton {
-  cursor: pointer;
-  width: 50%
+#index-home{
+  right: 3.5rem;
 }
 
 
-#deleteButton{
-  position: relative;
-  left: 3rem;
+#deleteBoard-btn{
+  background: red;
+  padding: .9rem;
+  border: 8px;
+  color: white;
 }
 
-#deleteButton:hover{
- transform: scale(1.2);  
-}
+
 
 
 .unselectable {
@@ -229,27 +229,23 @@ button:hover, button:focus{
   user-select: none;
 }
 
-#pencil{
-  position: relative;
-  left: .3rem;
-  top: .6em;
-}
 
-#projectName{
+
+#projectName, #projectDescription{
   outline: none;
 }
 
-#projectName::after{
+#projectName::after, #projectDescription::after{
   content: ' ';
   outline: none;
   width: 0px;
   height: 1px;
   display: block;
-  background: -webkit-linear-gradient(left, var(--red-color) 20%, var(--orange-color) 20%, var(--green-color));
+  background: black;
   transition: 300ms;
 }
 
-#projectName:hover::after{
+#projectName:hover::after, #projectDescription:hover::after{
   width: 100%;
 }
 
@@ -278,9 +274,9 @@ input[type=text]{
   flex-direction: row;
   overflow-x:  auto;
   overflow-y: hidden;
-  background-color: #9435a9;
+  border: 2px solid #ebecf0;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 5px;
   gap: 1rem;
   min-height: 15vh;
 }
@@ -291,34 +287,36 @@ input[type=text]{
 
 
 ::-webkit-scrollbar {
-  width: 10px;
-  background: #ebecf0;
-}
-
-::-webkit-scrollbar-track {
-  background: #ebecf0;
-  max-height: 3px;
+  width: 8px;
+  height: 10px;
+  background: white;
 
 }
- 
-::-webkit-scrollbar-thumb { 
-  background: #555; 
-  border-radius: 5rem;
-  max-height: 3px;
-}
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #c2c9d2;
 }
 
 .displayList-item img{
   border-radius: 50%;
+  cursor: pointer;
 
 }
 
-aside{
-  border-radius: 50%;
+.users-column{
+  display: flex;
+  gap: 2rem;
 }
+
+.user-texta{
+  background: white;
+  position: absolute;
+  top: 9.9rem;
+}
+
+
 
 /* Responsive layout*/
 @media screen and (min-width: 580px){
@@ -327,32 +325,49 @@ aside{
     display: grid;
     height: 100vh;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr)  ;
-    grid-template-rows: 1fr 1fr  1fr 5fr ;
+    grid-template-rows: 1fr 1fr 1fr 5fr ;
     grid-template-areas: 
-      'header header controls' 
-      'header header controls'
+      'header header header' 
+      'header header header'
       "users users users"
       'left middle right'; 
     gap: 1rem;
     padding: 1rem;
+    
   } 
 
   .list{
     background: rgb(235,236,240);
     border-radius: .1rem;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    overflow-y: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow-y: scroll;
+    
   }
 
   .list h2{
-    padding: 1rem;
+    padding: .5rem;
 
   }
 
   .list-item{
     width: 80%
   }
+
+  #projectDescription{
+    position: absolute;
+    top: 6.5rem;
+    left: 1.1rem;
+  }
+  
+
+  .back-container{
+    position: absolute;
+    top: 1rem;
+    right: 8.1rem;
+   text-decoration: inherit;
+  }
+  
 
   
 
