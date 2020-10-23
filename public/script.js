@@ -1,5 +1,6 @@
 let tasks = [];
 let boards = [];
+let taskedUsers = [];
 let draggedItem = null;
 let userDraggedItem = null;
 
@@ -181,9 +182,16 @@ function addButton(taskInput) {
             userList.addEventListener('drop', function (e) {
                 if (!(userDraggedItem == null)) {
                     if (!(this.hasChildNodes())) {
+
                         this.append(clone)
-                        console.log(clone)
+                        const cloneObject = {
+                            id: `${this.parentElement.id} child`,
+                            url: this.firstElementChild.src,
+                        }
+                        taskedUsers.push(cloneObject)
+                        console.log(taskedUsers)
                     }
+
                     this.style.backgroundColor = 'rgb(235,236,240)';
                 }
             });
@@ -213,4 +221,4 @@ function saveBoard() {
 
 const allUserData = (localStorage.getItem('usersData') ? JSON.parse(localStorage.getItem('usersData')) : [])
 const allUserDisplay = document.getElementById('displayUser')
-allUserDisplay.innerHTML =  allUserData.map(user => `<div> <p>${user.name}</p> <img height="40px" width ="40px" draggable="true" class="displayList-item" onclick="deleteUserButton(this)" src="${user.url}"></div>`).join("")
+allUserDisplay.innerHTML =  allUserData.map(user => `<div> <p>${user.name}</p> <img height="40px" width ="40px" draggable="true" class="displayList-item" style="border-radius: 50%;" onclick="deleteUserButton(this)" src="${user.url}"></div>`).join("")
