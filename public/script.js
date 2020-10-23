@@ -73,11 +73,13 @@ function deleteButton(item) {
 }
 
 function deleteUserButton(el) {
-    if (el.id == taskedUsers[0]) {
-        taskedUsers.splice(0, 1)
+    for (let i = 0; i < taskedUsers.length; i++) {
+        if (el.id == taskedUsers[i].id) {
+            taskedUsers.splice(i, 1)
+        }
     }
+    console.log(taskedUsers)
     if (el.parentElement.className == "image-container") { el.remove() }
-
 }
 
 function addButton(taskInput) {
@@ -199,6 +201,7 @@ function addButton(taskInput) {
 
                         this.append(clone)
                         clone.id = `${this.parentElement.parentElement.id} child`
+                        clone.className = "displayList-item droppedItem"
                         console.log(clone)
                         const cloneObject = {
                             id: `${this.parentElement.parentElement.id} child`,
