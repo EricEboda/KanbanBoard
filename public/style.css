@@ -377,6 +377,7 @@ input[type=text]{
   }
 
   #projectDescription{
+    padding-top: 1rem;
     font-size: 2rem;
   }
 
@@ -390,7 +391,7 @@ input[type=text]{
 
   img{
     margin-top: 15px;
-    transform:scale(1.5);
+    transform:scale(1.2);
   }
 
   input[type=text]{
