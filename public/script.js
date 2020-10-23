@@ -73,9 +73,11 @@ function deleteButton(item) {
 }
 
 function deleteUserButton(el) {
-    console.log(el)
+    if (el.id == taskedUsers[0]) {
+        taskedUsers.splice(0, 1)
+    }
     if (el.parentElement.className == "image-container") { el.remove() }
-    
+
 }
 
 function addButton(taskInput) {

@@ -190,6 +190,14 @@ button, button:focus{
   color: white;
 }
 
+.save-container{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+
+/*
 
 .back-container{
   position: absolute;
@@ -200,7 +208,7 @@ button, button:focus{
 
 #index-home{
   right: 3.5rem;
-}
+}*/
 
 
 #deleteBoard-btn{
@@ -248,17 +256,6 @@ input[type=text]{
   padding: .8rem;
 }
 
-.tooltiptext{
-  visibility: hidden;
-  border: 1px solid grey;
-  color: #2196F3;
-  border-radius: 8px;
-  padding: 0.1rem;
-}
-
-#back-container:hover .tooltiptext{
-  visibility: visible;
-}
 
 
 .users-bar{
@@ -303,13 +300,14 @@ input[type=text]{
   gap: 2rem;
 }
 
-.user-texta{
-  background: white;
-  position: absolute;
-  top: 9.9rem;
+
+
+.back-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ text-decoration: none;
 }
-
-
 
 /* Responsive layout*/
 @media screen and (min-width: 580px){
@@ -347,21 +345,68 @@ input[type=text]{
     width: 80%
   }
 
+  /*
   #projectDescription{
     position: absolute;
     top: 6.5rem;
     left: 1.1rem;
   }
+  */
   
 
-  .back-container{
-    position: absolute;
-    top: 1rem;
-    right: 8.1rem;
-   text-decoration: inherit;
+  
+
+  
+
+  .save-container{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
   }
   
+}
 
-  
+@media screen and (min-width: 1440px){
+  h1{
+    font-size: 4rem;
+  }
 
+  #projectName{
+    font-size: 5rem;
+  }
+
+  #projectDescription{
+    font-size: 2rem;
+  }
+
+  .list h2{
+    font-size: 2rem;
+  }
+
+  p{
+    font-size: 1.5rem;
+  }
+
+  img{
+    margin-top: 15px;
+    transform:scale(1.5);
+  }
+
+  input[type=text]{
+    font-size: 1.5rem;
+  }
+
+  .list-item{
+    font-size: 1.5rem;
+  }
+
+  button{
+    transform: scale(1.2);
+    margin-left: 2rem;
+    margin-right: 1rem;
+  }
+
+  aside{
+    font-size: 1.2rem;
+  }
 }
