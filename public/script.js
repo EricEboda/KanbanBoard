@@ -73,7 +73,9 @@ function deleteButton(item) {
 }
 
 function deleteUserButton(el) {
+    console.log(el)
     if (el.parentElement.className == "image-container") { el.remove() }
+    
 }
 
 function addButton(taskInput) {
@@ -194,8 +196,10 @@ function addButton(taskInput) {
                     if (!(this.hasChildNodes())) {
 
                         this.append(clone)
+                        clone.id = `${this.parentElement.parentElement.id} child`
+                        console.log(clone)
                         const cloneObject = {
-                            id: `${this.parentElement.id} child`,
+                            id: `${this.parentElement.parentElement.id} child`,
                             url: this.firstElementChild.src,
                         }
                         taskedUsers.push(cloneObject)
@@ -232,4 +236,4 @@ function saveBoard() {
 
 const allUserData = (localStorage.getItem('usersData') ? JSON.parse(localStorage.getItem('usersData')) : [])
 const allUserDisplay = document.getElementById('displayUser')
-allUserDisplay.innerHTML =  allUserData.map(user => `<div> <p>${user.name}</p> <img height="40px" width ="40px" draggable="true" class="displayList-item" style="border-radius: 50%;" onclick="deleteUserButton(this)" src="${user.url}"></div>`).join("")
+allUserDisplay.innerHTML =  allUserData.map(user => `<div> <p>${user.name}</p> <img height="40px" width ="40px" draggable="true" class="displayList-item" onclick="deleteUserButton(this)" src="${user.url}"></div>`).join("")
