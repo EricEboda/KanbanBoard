@@ -5,26 +5,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="grid-container lists">
+    <div id="grid-container" class="grid-container lists">
         <div class="header">
-            <a id="back-container" href="homepage.html"><img width="40" height="40" src="https://www.flaticon.com/svg/static/icons/svg/553/553416.svg" id="back-btn">
-                <span class="tooltiptext">Home</span></a>
-            <h2 id="projectName" contenteditable="true">New Project</h2><img width="20" height="20" src="https://www.flaticon.com/svg/static/icons/svg/3616/3616796.svg" id="pencil">
+            <a id="index-home" class="back-container" href="homepage.html"><img width="24" height="24" src="https://www.flaticon.com/svg/static/icons/svg/20/20176.svg" class="back-btn">
+                </a>
+            <h2 id="projectName" contenteditable="true">New Project<img width="20" height="20" src="https://www.flaticon.com/svg/static/icons/svg/565/565722.svg" ></h2>
+            <h3 id="projectDescription" contenteditable="true">Describe your project</h3>
+            <div class="save-container">
+                 <button class="save-btn" onclick="saveBoard()">Save Board</button>
+            </div>        
         </div>
     
         <div class="controls">
-            <section>
+            <section class="add-section">
                 <form onsubmit="return addButton(taskInput)">
                     <input id="task.value" name="taskInput" placeholder="Add a task" type="text"/>
-                    <button type="submit">Add</button>
+                    <button type="submit"><img src="https://www.flaticon.com/svg/static/icons/svg/1828/1828817.svg" height="70px" width="70px"></button>
                 </form>
             </section>
-            <div class="save-container">
-                 <button id="save-btn" onclick="saveBoard()">Save Board</button>
-            </div>
+            
         </div>
-        
-        <div class="users-bar" id="displayUser">
+        <div class="users-bar">
+            <aside class="user-texta">Assign User:</aside>
+            <div class="users-column" id="displayUser">
+            </div>
         </div>
 
         <div class="left list" id="todo-section">

@@ -17,6 +17,7 @@ const createUser = () => {
     document.getElementById('userList').innerHTML = `${users.map(user => `<option value="${user.id}">${user.name}</option>`).join("")}`
     localStorage.setItem("usersData", JSON.stringify(users)); 
     usersData = JSON.parse(localStorage.getItem("usersData") || "[]")
+    closeForm()
    
 }
 
