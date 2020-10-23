@@ -104,7 +104,7 @@ function addButton(taskInput) {
         <ul>
           ${tasks.slice(tasks.length - 1, tasks.length).map(task => `<li>${task.text}</li>`).join("")}
         </ul>
-         <img src="https://www.flaticon.com/svg/static/icons/svg/565/565491.svg" id="deleteButton" onclick="deleteButton(${tasks.length - 1})" height="20px" width="20px">
+         <img src="https://www.flaticon.com/svg/static/icons/svg/565/565491.svg" id="deleteButton" class="delete-button" onclick="deleteButton(${tasks.length - 1})" height="20px" width="20px">
     </div>
     <div class="assign-user">
      <aside ondragover="event.preventDefault()" class="image-container"  style="border: 1px solid grey; width: 2rem; height: 2rem;"></aside>

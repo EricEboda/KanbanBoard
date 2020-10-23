@@ -80,11 +80,11 @@
             <ul>
                 ${board.tasks.slice(board.tasks.length - 1, board.tasks.length).map(task => `<li>${task.text}</li>`).join("")}
             </ul>
-            <img src="https://www.flaticon.com/svg/static/icons/svg/565/565491.svg" id="deleteButton" onclick="deleteButton(${board.tasks.length - 1})" height="20px" width="20px">
+            <img src="https://www.flaticon.com/svg/static/icons/svg/565/565491.svg" id="deleteButton" class="delete-button" onclick="deleteButton(${board.tasks.length - 1})" height="20px" width="20px">
             </div>
             <div class="assign-user">
             <aside ondragover="event.preventDefault()" class="image-container"  style="border: 1px solid grey; width: 2rem; height: 2rem;"></aside>
-             </div>
+            </div>
     `
 
 
@@ -171,11 +171,16 @@
             taskDiv.setAttribute("draggable", "true");
                 
             document.getElementById(`task${i+1}`).innerHTML += `
-            <aside ondragover="event.preventDefault()" class="image-container"  style="border: 1px solid red; width: 2rem; height: 2rem;"></aside>
+            <div class="assign__task">
             <ul>
-                ${board.tasks.slice(i, i+1).map(task => `<li>${board.tasks[i].text}</li>`).join("")}
+            ${board.tasks.slice(i, i+1).map(task => `<li>${board.tasks[i].text}</li>`).join("")}
             </ul>
-            <img src="https://www.flaticon.com/svg/static/icons/svg/565/565491.svg" id="deleteButton" onclick="deleteButton(${i})" height="20px" width="20px">
+            <img src="https://www.flaticon.com/svg/static/icons/svg/565/565491.svg" id="deleteButton" class="delete-button" onclick="deleteButton(${i})" height="20px" width="20px">
+            </div>
+            <div class="assign-user">
+            <aside ondragover="event.preventDefault()" class="image-container"  style="border: 1px solid grey; width: 2rem; height: 2rem;"></aside>
+            </div>
+            
             `
         }
 

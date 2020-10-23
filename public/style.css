@@ -309,6 +309,21 @@ input[type=text]{
  text-decoration: none;
 }
 
+.droppedItem{
+  position: relative;
+  right: .5rem;
+  bottom: .2rem;
+
+}
+
+ul{
+  list-style: none;
+}
+
+ul li{
+  text-decoration: none;
+}
+
 /* Responsive layout*/
 @media screen and (min-width: 580px){
   .grid-container {
@@ -353,11 +368,6 @@ input[type=text]{
   }
   */
   
-
-  
-
-  
-
   .save-container{
     display: flex;
     flex-direction: row;
@@ -390,7 +400,7 @@ input[type=text]{
 
   img{
     margin-top: 15px;
-    transform:scale(1.2);
+    /*transform:scale(1.2);*/
   }
 
   input[type=text]{
@@ -409,5 +419,23 @@ input[type=text]{
 
   aside{
     font-size: 1.2rem;
+  }
+
+  .droppedItem{
+    position: relative;
+    bottom: 1rem;
+    transform: scale(0.8);
+  }
+
+  .displayList-item{
+    transform: scale(1.8);
+    margin-left: 20px;
+  }
+
+  .image-container{
+    width: 3rem!important;
+    height: 3rem!important;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 }
