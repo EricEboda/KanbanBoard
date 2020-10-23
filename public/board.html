@@ -7,11 +7,14 @@
 <body>
     <div class="grid-container lists">
         <div class="header">
-            <a class="back-container" href="homepage.html"><img width="24" height="24" src="https://www.flaticon.com/svg/static/icons/svg/20/20176.svg" class="back-btn">
-            </a>
-            <h2 id="projectName" contenteditable="true">New Project<img width="20" height="20" src="https://www.flaticon.com/svg/static/icons/svg/565/565722.svg"></h2>
-            <h3 id="projectDescription" contenteditable="true">Describe your project</h3>
+            
+            <div class="des-name">   
+                <h2 id="projectName" contenteditable="true">New Project<img width="20" height="20" src="https://www.flaticon.com/svg/static/icons/svg/565/565722.svg" ></h2>
+                <h3 id="projectDescription" contenteditable="true">Describe your project</h3>
+            </div> 
             <div class="save-container">
+                <a class="back-container" href="homepage.html"><img width="24" height="24" src="https://www.flaticon.com/svg/static/icons/svg/20/20176.svg" class="back-btn">
+                </a>
                 <button class="save-btn" onclick="updateBoard()">Update Board</button>
                 <button id="deleteBoard-btn" onclick="deleteBoard()">Delete Board</button>
            </div>
@@ -24,8 +27,9 @@
             </section>
            
         </div>
-
+       
         <div class="users-bar" id="displayUser">
+            <aside class="user-texta">Assign User:</aside>
         </div>
         
         <div class="left list" id="section1">
